@@ -25,7 +25,10 @@ func _ready():
 func _physics_process(_delta):
   velocity = move_and_slide(velocity, Vector3(0,1,0))
   # Send cactus back once it reaches the other side
-  if cactus.get_translation().x < ground_size_min.x:
+  var cactus_pos = cactus.get_translation()
+  if cactus_pos.x < ground_size_min.x || cactus_pos.x > ground_size_max.x:
+    spawn()
+  if cactus_pos.z < ground_size_min.z || cactus_pos.z > ground_size_max.z:
     spawn()
   #print(cactus.get_translation())
   pass
