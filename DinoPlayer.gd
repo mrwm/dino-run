@@ -7,6 +7,7 @@ var character
 var is_moving
 
 const SPEED = 6
+const JUMP = 10
 const ACCELERATION = 3
 const DE_ACCELERATION = 5
 
@@ -37,6 +38,11 @@ func _physics_process(delta):
   if (Input.is_action_pressed("ui_right")):
     #print("DOWN")
     dir += camera.basis[0]
+
+  if (Input.is_action_pressed("ui_select")):
+    if is_on_floor():
+      print("JUMP")
+      velocity.y = JUMP
 
   dir.y = 0
   dir = dir.normalized()
