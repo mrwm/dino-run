@@ -41,7 +41,7 @@ func _physics_process(delta):
 
   if (Input.is_action_pressed("ui_select")):
     if is_on_floor():
-      print("JUMP")
+      #print("JUMP")
       velocity.y = JUMP
 
   dir.y = 0
