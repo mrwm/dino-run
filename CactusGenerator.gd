@@ -24,7 +24,7 @@ func _ready():
 
 func _physics_process(_delta):
   velocity = move_and_slide(velocity, Vector3(0,1,0))
-  # Send cactus back once it reaches the other side
+  # Send cactus back once it reaches the sides
   var cactus_pos = cactus.get_translation()
   if cactus_pos.x < ground_size_min.x || cactus_pos.x > ground_size_max.x:
     spawn()
@@ -45,7 +45,7 @@ func spawn():
   # Set a random position for the cactus to start at
   randomize() # use randomize() to make things different each run
   cactus_position.z = rand_range(ground_size_min.z,ground_size_max.z)
-  cactus_position.x = ground_size_max.x + rand_range(0,5)
+  cactus_position.x = ground_size_max.x - rand_range(0,5)
   cactus_position.y = 2
   cactus.set_translation(cactus_position)
   velocity.x = -SPEED
